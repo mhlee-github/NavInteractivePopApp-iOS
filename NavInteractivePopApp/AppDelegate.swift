@@ -12,10 +12,23 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
   var window: UIWindow?
-
+  let nc: UINavigationController = UINavigationController()
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     // Override point for customization after application launch.
+    
+    window = UIWindow(frame: UIScreen.main.bounds)
+    if let w = window {
+      nc.navigationBar.setBackgroundImage(UIImage(), for: .default)
+      nc.navigationBar.isTranslucent = false
+      
+      let vc = TabBarController()
+      nc.viewControllers = [vc]
+      
+      w.rootViewController = nc
+      w.makeKeyAndVisible()
+    }
+    
     return true
   }
 
